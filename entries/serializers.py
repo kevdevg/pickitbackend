@@ -6,9 +6,11 @@ from entries.models import Entry
 
 class EntrySerializer(serializers.ModelSerializer):
 
+    owner = serializers.ReadOnlyField(source='owner.username')
+
     class Meta:
         model = Entry
-        fields = ('id', 'image', 'title', 'description', 'nasa_id')
+        fields = ('id', 'image', 'title', 'description', 'nasa_id', 'owner')
 
 
 class UserSerializer(serializers.ModelSerializer):
